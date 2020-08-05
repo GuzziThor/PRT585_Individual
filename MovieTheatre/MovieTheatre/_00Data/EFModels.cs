@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MovieTheatre._00Data
 {
     public class Movie
-    {   [Key]
+    { 
         public int MovieID { get; set; }
         [StringLength(50)]
         [Required]
@@ -23,7 +23,8 @@ namespace MovieTheatre._00Data
 
         public Language LanguageType { get; set; }
         [Required]
-        public Category Category { get; set; }
+        public int CategoryID { get; set; }
+        public virtual Category Category { get; set; }
 
     }
 
@@ -35,12 +36,12 @@ namespace MovieTheatre._00Data
     }
     public class Category
     {
-        [Key]
         public int CategoryID { get; set; }
         [StringLength(50)]
         [Required]
         public string Name { get; set; }
         [Required]
         public string Code { get; set; }
+        public virtual ICollection<Movie> Movies {get;set;}
     }
 }

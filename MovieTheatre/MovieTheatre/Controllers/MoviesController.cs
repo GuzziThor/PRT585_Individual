@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MovieTheatre._00Data;
 using MovieTheatre.Models;
+using MovieTheatre._00Data;
 
 namespace MovieTheatre.Controllers
 {
@@ -18,13 +18,12 @@ namespace MovieTheatre.Controllers
         {
             _context = context;
         }
-       
 
         // GET: Movies
         public async Task<IActionResult> Index()
         {
-            ViewBag.Category = _context.Category.ToList();
-            return View(await _context.Movies.ToListAsync());
+            var movieDBContext = _context.Movies.Include(m => m.Category);
+            return View(await movieDBContext.ToListAsync());
         }
 
         // GET: Movies/Details/5
@@ -36,6 +35,7 @@ namespace MovieTheatre.Controllers
             }
 
             var movie = await _context.Movies
+                .Include(m => m.Category)
                 .FirstOrDefaultAsync(m => m.MovieID == id);
             if (movie == null)
             {
@@ -48,6 +48,7 @@ namespace MovieTheatre.Controllers
         // GET: Movies/Create
         public IActionResult Create()
         {
+            ViewData["CategoryID"] = new SelectList(_context.Category, "CategoryID", "Code");
             return View();
         }
 
@@ -56,7 +57,7 @@ namespace MovieTheatre.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MovieID,Title,ReleaseDate,Director,Contact_Email,LanguageType,Category")] Movie movie)
+        public async Task<IActionResult> Create([Bind("MovieID,Title,ReleaseDate,Director,Contact_Email,LanguageType,CategoryID")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +65,7 @@ namespace MovieTheatre.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CategoryID"] = new SelectList(_context.Category, "CategoryID", "Code", movie.CategoryID);
             return View(movie);
         }
 
@@ -80,6 +82,7 @@ namespace MovieTheatre.Controllers
             {
                 return NotFound();
             }
+            ViewData["CategoryID"] = new SelectList(_context.Category, "CategoryID", "Code", movie.CategoryID);
             return View(movie);
         }
 
@@ -88,7 +91,7 @@ namespace MovieTheatre.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MovieID,Title,ReleaseDate,Director,Contact_Email,LanguageType,Category")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("MovieID,Title,ReleaseDate,Director,Contact_Email,LanguageType,CategoryID")] Movie movie)
         {
             if (id != movie.MovieID)
             {
@@ -115,6 +118,7 @@ namespace MovieTheatre.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CategoryID"] = new SelectList(_context.Category, "CategoryID", "Code", movie.CategoryID);
             return View(movie);
         }
 
@@ -127,6 +131,7 @@ namespace MovieTheatre.Controllers
             }
 
             var movie = await _context.Movies
+                .Include(m => m.Category)
                 .FirstOrDefaultAsync(m => m.MovieID == id);
             if (movie == null)
             {

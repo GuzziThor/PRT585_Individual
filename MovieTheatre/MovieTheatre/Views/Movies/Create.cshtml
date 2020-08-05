@@ -1,4 +1,5 @@
 ﻿@model MovieTheatre._00Data.Movie
+
 @{
     ViewData["Title"] = "Create";
 }
@@ -34,15 +35,13 @@
             <div class="form-group">
                 <label asp-for="LanguageType" class="control-label"></label>
                 <select asp-for="LanguageType" class="form-control" asp-items="Html.GetEnumSelectList<MovieTheatre._00Data.Language>()">
-                    <option selected="selected" value="">Please select</option>
+                    <option selected="selected" value="">Please Select</option>
                 </select>
                 <span asp-validation-for="LanguageType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <select asp-for="Category" class="custom-select">
-                    <option value="">Select Category</option>
-                </select>
+                <label asp-for="CategoryID" class="control-label"></label>
+                <select asp-for="CategoryID" class ="form-control" asp-items="ViewBag.CategoryID"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MovieTheatre._00Data;
 using MovieTheatre.Models;
+using MovieTheatre._00Data;
 
 namespace MovieTheatre.Controllers
 {
@@ -22,8 +22,6 @@ namespace MovieTheatre.Controllers
         // GET: Categories
         public async Task<IActionResult> Index()
         {
-            
-
             return View(await _context.Category.ToListAsync());
         }
 
