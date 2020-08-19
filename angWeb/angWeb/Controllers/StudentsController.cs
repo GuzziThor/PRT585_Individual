@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using angWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -14,9 +15,15 @@ namespace angWeb.Controllers
     {
         // GET: api/<StudentsController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Student> Get()
         {
-            return new string[] { "value1", "value2" };
+            List<Student> oStudents = new List<Student>()
+            {new Student(){Id = 1, Name= "august", Roll=101 },
+            new Student(){Id = 2, Name= "augusting", Roll=10111 },
+            new Student(){Id = 3, Name= "ustine", Roll=1011 }
+            };
+            
+            return oStudents;
         }
 
         // GET api/<StudentsController>/5
