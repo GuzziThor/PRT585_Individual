@@ -1,10 +1,9 @@
-<table *ngIf="Students && Students.Length >0">
+<table *ngIf="Students && Students.length >0">
   <thead>
     <th>serial</th>
     <th>id</th>
     <th>name</th>
     <th>roll</th>
-
   </thead>
   <tbody>
     <tr *ngFor="let student of Students; let i = index">
