@@ -1,12 +1,11 @@
-﻿using Employee._DAL.Models;
-using Employee.Models;
+﻿using EmployeeMVC._DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Employee._DAL.Services
+namespace EmployeeMVC._DAL.Services
 {
     public class EmployeeDbContext : DbContext
     {
@@ -15,7 +14,7 @@ namespace Employee._DAL.Services
 
 
         }
-        public DbSet<EmployeeModel> Employees { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
     }
 }
