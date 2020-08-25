@@ -30,6 +30,7 @@ namespace AngularAPI
 
             services.AddDbContext<workoutContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("workoutContext")));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,12 +40,13 @@ namespace AngularAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
+           
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseAuthorization();
+           
 
             app.UseEndpoints(endpoints =>
             {

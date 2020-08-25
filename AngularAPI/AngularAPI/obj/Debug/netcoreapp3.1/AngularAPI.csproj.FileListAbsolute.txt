@@ -152,3 +152,5 @@ C:\Users\GuzziFuzzy\Desktop\PRT585_Individual\AngularAPI\AngularAPI\obj\Debug\ne
 C:\Users\GuzziFuzzy\Desktop\PRT585_Individual\AngularAPI\AngularAPI\obj\Debug\netcoreapp3.1\AngularAPI.dll
 C:\Users\GuzziFuzzy\Desktop\PRT585_Individual\AngularAPI\AngularAPI\obj\Debug\netcoreapp3.1\AngularAPI.pdb
 C:\Users\GuzziFuzzy\Desktop\PRT585_Individual\AngularAPI\AngularAPI\obj\Debug\netcoreapp3.1\AngularAPI.genruntimeconfig.cache
+C:\Users\GuzziFuzzy\Desktop\PRT585_Individual\AngularAPI\AngularAPI\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
+C:\Users\GuzziFuzzy\Desktop\PRT585_Individual\AngularAPI\AngularAPI\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
