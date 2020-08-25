@@ -27,6 +27,13 @@ getBlogPosts(): Observable<BlogPost[]> {
     catchError(this.errorHandler)
   );
 }
+getBlogPost(postId: number): Observable<BlogPost> {
+  return this.http.get<BlogPost>(this.myAppUrl + this.myApiUrl + postId)
+  .pipe(
+    retry(1),
+    catchError(this.errorHandler)
+  );
+}
 saveBlogPost(blogPost): Observable<BlogPost> {
   return this.http.post<BlogPost>(this.myAppUrl + this.myApiUrl, JSON.stringify(blogPost), this.httpOptions)
   .pipe(
